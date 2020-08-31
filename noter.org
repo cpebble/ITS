@@ -1,0 +1,188 @@
+* ITS
+Zoom: https://ucph-ku.zoom.us/j/61251663095?pwd=YURWTG0xQmtDS21TL0hwOVFUVFI2UT09
+* 31/08 Intro
+** Bog
+Computer security: Principles and Practice.
+Stalling & Lawrie Brown, 4th and Global Ed.
+
+** Afleveringer
+6 Ugentlige
+Bestået/ikke bestået
+Mindst 66% korrekt for eksamenskvalificeringer
+Kun EN Genaflevering(1-4)
+
+** Labs
+TAs:
+- Niels Christian Buch
+- Ole-Christian Galbo Engstrøm
+- Lasse Grønborg
+
+** Eksamen
+Nov 2020
+4-hour skriftlig
+Hjælpemidler uden internettet
+
+** Læremål
+- Introduktion til fæltet it-sikkerhed
+- How to think about breaking systems
+- Defending from hackers
+- Hands-on experience during exercises
+
+** Hvad er IT-sikkerhed
+- Firewalls
+- Crypto
+- Software flaws
+- Code review
+- Reverse Engineering
+- Security management
+- Passwords
+- Patching
+- Trusselsmodeller
+- Intrusion Detection
+- Incident handling
+
+Usability er modstykket til sikkerhed
+
+** Hovedespørgsmål
+Hvad er vigtigt for mig?
+Hvad er min trusselsmodel
+
+** Sikkerhedsmål
+STRIDE Mål:
+
+| Threat                                         | Desired property  |
+|------------------------------------------------+-------------------|
+| Spoofing                                       | Authenticity      |
+| Tampering                                      | Integrity         |
+| Repudiation(man kan ikke løbe fra en kontrakt) | Non-repudiability |
+| Information disclosure                         | Confidentiality   |
+| Dos                                            | Abailability      |
+| Elevation of priviledge                        | Authorization     |
+
+** Hacking timeline
+Center for cybersikkerhed siger "Cybertruslen mod Dk er meget høj"
+*** Notable hacks:
+*** 2010 - Stuxnet
+Et angreb på iranske netværk. Sigtede fysisk ødelæggelse
+*** 2010 - Operation Aurora
+Angreb på google fra "kinesiske hackere"
+*** 2011 - Anonymous og Lolsec
+Hacktivister. Anonymous blev kaldt "person of the year" af time
+*** 2012 - Saudi aromco
+Flere tusinde filer i et saudi arabisk oliefirme blev overskrevet
+af billeder af amerikanske flag. Et hacktivistgruppe tog ansvar,
+men det menes at være iran
+*** 2013 APT
+En kontroversiel rapport om Advanced persistent threats
+Stats-sponsorerede hackere. Den første officielle rapport om statshacking
+med fokus på kina
+*** 2014 Sony
+Igen påstået at være hacktivister "Guardians of peace"
+Turns out, det var nordkoreanske hackere. The Interview filmen
+*** 2014 Snowden leaks
+No further info neccesary :'( 
+*** 2015 Rapport fra FET
+Den årlige sikkerhedsrapport. For første gang siger FET At risikoen for
+cyberangreb er meget høj
+FET er den offentlige myndighed imod 
+*** 2015 Angreb på ukrainske elkraftværker
+Cyberangreb der sørgede for at flere ukrainske husstande mistede strøm.
+Russisk angreb
+Første gang kritisk infrastruktur blev ramt
+*** 2016 Angreb på hillarys kampagne
+Russiske statsstøttede hackere lækkede konfidentielle mails fra hillarys
+kampagne.
+Viser at man ikke kun hacker for at spionere, men også for at komme ud
+for folk
+*** 2017 NSA værktøjer hacket
+Shadowbrokers lækker NSAs zero-days
+Inklusiv Eternalblue
+*** 2017 som leder til de to angreb
+NotPetya - Mærsk Ransomware
+Wannacry - Ransomware
+
+** Så hvem hacker?
+Low-skilled, low-fokus: De nemme. Skiddies
+High-skille, low-fokus: Mere seriøse hacks.
+High-skilled, high-fokus: De skræmmende. Fremmede efterretningstjenester
+Low-skilled, high-fokus: Flere skiddies med en konto på hackforums
+- Cyberkrig
+- Cyberterror
+- Hacktivister
+- Espionace
+- APT
+- Cybercrime
+
+*** Cyberkrig
+**** Estonia 2007
+En statue skulle flyttes. Mange sider blev under dette forløb DDoS'ed. Er det nationsstat
+mod nationstat? Ingen direkte smoking gun, men der er forbindelser til kremlt
+**** Palestina 2019. Lidt mere seriøs
+Israels militær udgiver to billeder af en bygning. "Disse to bygninger blev bombet fordi
+der sad folk igang med at hacke os"
+Blanding af konventionel krig og cyberkrig. Meget afskrækkende
+
+**** Et femte domæne
+USA Siger det er et nyt domæne
+"Land, Sea, Air, Space, /Cyber/"
+Altså. Du risikerer at få konventionelle våben brugt mod dig hvis du bruger cyber mod dem
+
+*** Hacktivisme
+Anonymous for eksempel
+
+Hacker for at kæmpe tilbage mod systemet. Det er uklart hvad der pirrer
+dem, så alt kan få dem efter dig
+Primært 2011
+**** False flags
+Guccifer 2.0 - Hillary
+Guardians of peace - Nordkorea vs Sony
+Cutting sword of justice - Angrebet på Saudi Aramco 2012
+
+*** Cyberspionage
+Meget mindre risikofyldt end klassisk spionage. 
+
+FE Hacker. Se cyber-akademiet.
+NSA Hacker
+
+*** APT
+Når man finder cybergrupper man går ud fra er stater giver man dem navne
+APT10/Stone Panda/Potassium/Red Apollo
+
+APT10 er på fbi most wanted
+
+** Hvordan hacker vi?
+70% ahcks er externe aktorer
+30% er interne aktører indblandet
+55% er fra organiserede grupper
+
+Phishing er mest populært
+Scan-and-Exploit er næsten lige så højt
+Unauthed use of credentials. Den sidste store, lækkede pw-lists
+
+*** Unauthed use of creds
+Hvis du kun bruger mail/password, og mister dit pw så kan alle logge ind
+- Case story
+CEO af et dansk firma med 100 employees.
+To falske mails blev sendt til regnskab. 600k og 40k blev anmodet
+Attackere loggede på fra Nigeria
+De lavede automatiske regler til at slette svar fra regnskab. CEO så intet svar
+
+- Hvad er løsningen?
+2fa
+Something you know, something you have
+
+*** Scan and exploit
+Brug shodan til at finde sårbare servere. ExploitDB kan finde databaserne
+
+*** Cyber kill chain
+Lockheed martin
+Recon -> Weaponization -> Delivery -> Exploit -> Installation -> Command and Control -> Exfiltration
+
+*** Mitre ATT&Ck
+Har 12 faser. Er mere udpenslet
+[[https://attack.mitre.org/][Link til MITRE]]
+
+** Så hvad kan vi gøre
+- Studere angreb
+- Finde huller og Lappe dem
+- Investere i /Cyber/
