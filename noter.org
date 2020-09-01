@@ -186,3 +186,111 @@ Har 12 faser. Er mere udpenslet
 - Studere angreb
 - Finde huller og Lappe dem
 - Investere i /Cyber/
+* 01/09 Lab 1(kryptografi recap)
+** Symmetrisk kryptering
+- Uneversel teknik itl at sørge for /confidentiality/ for overførsel af data
+- Også kaldet "konventionel kryptering" eller "single-key" kryptering
+- Der er generelt to krav:
+  - En stærk krypteringsalgoritme
+  - Sender og modtager må have modtaget kopier af secret key OOB
+- Det sidste punkt er også det største problem. Både afsender og modtager skal have modtaget 
+  Secret keyen
+
+Plaintext input -X> krypteringsalgoritme med nøgle k) -Ciphertext)> Dekrypteringsalgoritme med kopi af k -> Plaintext output
+
+Forskellige angreb:
+- Cryptanalytiske angreb:
+  - kræver:
+    - Angreb på algoritmens natur
+    - kendskab til karakteristika af plaintext
+    - Evt. plaintext-ciphertext par
+  - Exploiterer algoritmen svagheder til at finde en specifik plaintext
+    eller brugt nøgle
+    - Hvis successfuldt knækker det alle forrige og fremtidige beskeder krypteret med den nøgle
+- Brute force
+  - Prøv alle mulige nøgler på et ciffertekst indtil en læsbar plaintext nås
+
+    Tre populære symmetriske krypteringsalgoritmer
+| x               | DES | Triple DES |         AES |
+|-----------------+-----+------------+-------------|
+| Plaintext block |  64 |         64 |         128 |
+| Ciffertext      |  64 |         64 |         129 |
+| keysize         |  56 |    112/168 | 128,192,256 |
+AES Er den forretrukne
+
+*** AES
+AES Tager $10^60$ år at bryde med keysize 256
+
+NIST Bad om forslag til en ny krypteringsalgoritme i 1997. Derfra AES
+
+- Praktiske problemer:
+  - Typisk bruges de på en enhed af data større end en 64 eller 128 bit block(obvsly)
+    Det giver information omkring den tekst der lagres
+  - Electronic codebook er den simpleste måde at kryptere multiple blocks
+    - Analyster kan udnytte regularities i cifferteksten
+
+ECB Deler teksten op i blocke og krypterer dem alle med samme nøgle
+
+Stream-cipher er meget bedre, den tager en strøm af blocke og krypterer den.
+Dette giver også mening på internettet hvor man har en strøm af data
+Vi genererer en ny nøgle hver gang vi krypterer en block. Dette gør vi ved brug
+af en "pseudo-random-key-generator". Nøglen er essentielt et matematisk "seed" til
+denne algoritme
+
+En fordel er at sende en symmetrisk nøgle seed via assymetrisk kryptering
+
+** Message Authentification
+- Beskytter mod aktive angreb ved at 
+- bekræfte at den besked der sendes er korrekt,
+  - ikke ændret(integritet)
+  - fra en autentisk kilde(auth)
+  - Timely og i korrekt sekvens(mitm)
+- kan bruge konventionel kryptering
+  
+*** Message auth uden fortrolighed
+- Beskedkryptering giver ikke i sig selv en sikker form for authentikering
+
+Vi kan bruge MAC - Message authentication code
+Brug plaintext igennem MAC algoritmen og krypter denne med din crypto.
+append resultatet til beskeden.
+Send den appendede besked til modtager
+Modtager tager så beskeden, kører den igennem MAC algoritmen og sammenligner
+med den appendede og dekrypterede MAC. En simple MAC er en hashfunktion
+/MAC: Dette er basically en spicy checksum/
+
+For at en hashfunktion kan bruges skal føllgende egenskaber gælde:
+- kan bruges på en blok af arbitrær størrelse
+- Producerer en fixed-length output
+- H(x) er relativt billig at udregne for et givent x(Især timing attacks her)
+- Envejs eller pre-image modstandsdygtigt
+- Det er svært at finde en y != x således at H(y) = H(x)
+- kollisionsmodstandsdygtigt
+
+Der er to approaches til at angribe en sikker hashfunktion(de sanmme som med symmetri)
+SHA er den mest vidt brugte hash-algoritme
+
+** Public-key kryptering
+Offentliggt proposed af Diffie og Hellman i 1976
+Baseret på matematiske funktioner
+Assymetrisk
+- To seperate nøgler,
+- Publickey og privatekey
+- Public key er offentlig og skal deles
+
+Vi har igen en krypteringsalgoritme
+- Plaintext
+- Algoritmen
+- Public og Private key(En til kryptering, en til dekryptering)
+- Cifferteksten
+
+En bruger krypterer data med sin egen private key.
+Alle med den tilsvarende offentlige nøgle kan dekryptere den
+Dette kan bruges til Message Authentification
+
+*** krav til Public-key systemer
+- Billigt at skabe nøglepar
+- Billigt for sender at kryptere beskeder
+- Andet stuff
+
+
+
