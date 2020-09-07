@@ -294,3 +294,96 @@ Dette kan bruges til Message Authentification
 
 
 
+* 07/09 Risk Assessments/OS-Sec/Software-Sec/Webapp-Sec
+I it-sikkerhed arbejder vi med /intelligent adversaries/. Altså
+modstandere der rent faktisk prøver at breake ting.
+
+Threat model: Er du en del af flokken vs et mål.
+- En gut på rådhuspladsen vs en celebrity
+- En lille rengøringstjeneste vs maersk eller udenrigsministeriet
+
+Man har en "Risiko appetit"
+- Grund-risiko
+- Uheld
+- Målrettede angreb
+- Stater(APT)  
+Hvor lægger du din sikkerhedsbar?
+
+** Risk Assessment
+En trekant af
+- Vulnerabilities
+- Værdi/konsekvens
+- Trusler
+
+Hvis værdi/konsekvens er lav er det ok med en lav severity  
+Hvis der er mange sårbarheder, men ingen trusler(en air-gapped server
+eg), så er det også low-severity  
+
+*** De fem risk assessment spørgsmål
+1. What do you want to protect
+   Assets
+2. Who do you want to protect it from
+   Adve. and threats
+3. How likely is it that you will need to protecct it
+   Probability
+4. How bad are the consequences if you fail?
+   Risk
+5. How much trouble are you willing to go through?
+   Value
+
+Lav threat modeling tidligt. Målet er at finde fejl i sikkerheds /design/
+
+- Trusler vs Risiko
+Det er rigtigt vigtigt at skelne mellem "Hvad kan gå galt" og "Hvad er sandsynligt der går galt"
+
+** OSS
+*Attack surface*:
+Nederst til øverst:
+- Fysisk Hardware
+  Hvis du har fysisk adgang er der mange mulige angreb(rubber ducky e.g.)
+- OS Kernel(Bios/SMM her)
+  Skalerer ikke særligt godt, da OS kræver mange resourcer at breake
+- User Applications and Utilities
+  Nemmest, laveste effort
+
+Det gælder om at have så mange lag som muligt for at være helt sikker.
+Undgå så vidt muligt /single point of failure/
+
+Igen er det en god ide at starte med en risk assessment
+- Sikrer derefter OS og hovede-applicationer(ikke kør IE f.eks.)
+  Sæt processer op til opdatering, patching, etc.
+- Sikrer kritisk content 
+- Sikrer netværksbeskyttelse
+- Sikrer at de opstilte processer bliver brugt
+
+Leverandører og sikkerhedsorganiseringer har /security hardening guides/ som
+basically er checklists
+
+*** Base OS Hardening
+Patch og install OS  
+Harden OS ved
+- Fjern unødvendige services/apps
+- Konfigurer brugere/grupper/permissions
+- Installer ekstra sikkerhedscontrols
+  Antivirus, host-based Firewalls, Intrusion detection systems
+- Test sikkerheden af base OS
+
+** Web App Sec
+Du kan sagtens have usikker software over en sikker kommunikationskanal  
+Typiske risiko:
+- Defacing
+- Exposing info
+- Money/cc issues
+- Botnets
+- DoS
+- Crypto miners
+
+En webserver kan nemt bruges som springbræt til det interne netværk(e.g. den går igennem firewall)
+
+/Noter at målet her er at angrebe server og ikke brugere/
+
+*SANITIZE* Brugerdata!!  
+Gå ud fra at alt brugerinput er hostile  
+Brug stored procedures til at abstrahere data access  
+Minimer database privilegier  
+/Whitelist/ Input validation
