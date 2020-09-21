@@ -387,3 +387,134 @@ Gå ud fra at alt brugerinput er hostile
 Brug stored procedures til at abstrahere data access  
 Minimer database privilegier  
 /Whitelist/ Input validation
+* 11/09 User Auth
+** ACL - access control list
+"Alice: read, write; Bob: read"
+
+- RBAC 
+Role based access control. Brugere har grupper, grupper har perms
+
+Når man kigger på disse emner bruger vi /Subjekter, Objekter og Access right/
+- Subject skal kunne tilgå objekter
+- Objecter er resourcer som adgang skal controlleres
+- Access right beskriver hvordan et subjekt må påvirke et objekt
+  - Read
+  - Write
+  - Exec
+  - Create/Delete
+  - Search
+
+Policies:
+- Dac: Discretionary Access control
+  Controls access based on the id of the requestor and on access rules
+  stating what requestors are allowed to do
+- MAC: Mandatory Access control
+  Controls access based on sec labels and clearances. Du må ofte gerne
+  dele op, men ikke dele ned. kræver rigtigt meget administration
+- RBAC: Role-based.
+- ABAC: Controls based on attributes of the user e.g. alder, id, ip
+
+** IAM
+
+En /administrativ process/ blandet med en teknologisk løsning, som validerer
+identiteten af individer, og tillader ejere af data, applications, og systemer
+som enten centralt eller distribueret ansvar for at tilgive access til deres
+respektive resourcer, til alle der deltager inde i IAM Frameworket
+
+- Life cycle management
+
+- Identitet, Authe, og Autho
+- Principle of least access
+- Grupper og roller
+- Maintenance
+- Segregation of duties. Udvikler har ikke devops ansvar e.g.
+
+*** kernekoncepter
+- Identitet(Public assertion)
+- Authentication(Secret response)
+- Authorization(Token, Ticket or Access control)
+  
+*** Case
+Du arbejder på et internt projekt til udvikling af nyt økonomisystem til din virksomhed
+
+Projektlederne fortæller at for at overholde tidsplanen skal der ikke bruges bruger-id'er.
+Systemet skal i stedet have et stærkt hardcodet password.  
+Alle der skal have adgang vil få oplyst koden hvis de har brug for adgangen.  
+Det er slemt fordi: 
+- Ingen bruger-id = ingen logging/reportin
+- Brugere husker ikke 17 tegn, men skriver det ned
+- Ingen funktionsadskillelse
+- Du kan ikke fjerne folk igen når de forlader virksomheden
+
+** Tre faktorer til auth
+Noget man /ved/, Noget man /har/, og noget man /er/
+
+** Angreb imod passwords
+1. Hvad er dit password?
+2. Gætte passwords
+3. Dict attacks
+4. Brute force
+5. Rainbow tables
+
+** Hashing og at gøre det sikkert
+Hvis du har offline hash - Du ripped :'(
+
+Hvis du har online hash, implementer en langsom alg, og/eller hav en penalty period
+
+** Hvad er et godt password
+Mange regler, primære er at øge keyspace(æøå()+=]*%) og længde
+Længde > komplexitet
+
+** Single sign on
+Silo - Federation(Siloer stoler på hinanden)
+
+Identity provider - Udsteder akkreditiver  
+Service provider - Ticket fra IP  
+Identity - bruger
+
+Tokens
+*** SAML - mest udbredt
+Security Assertion Markup Language. En XML Baseret åben standard
+* 14/09 Malware
+Gæsteforelæser jens Christian Høy Monrad  
+> Head of Mandiant Threat Intelligence, EMEA
+
+** Trusselslandskabet: Motivation
+Folk ser ikke:
+- Organizationer splittet i industrier
+- Low-level employee
+- Personlig air-gapped netværk
+- kun hvad de leder efter
+- En sikker organization
+De ser
+- Unpatched vulns
+- Nogen med adgang
+- En vej ind i et måls netværk
+- En "Close access opportunity"
+- Overraskelser i din configfil
+- En vej til at opnå deres strategiske mål
+  
+Faktorer der påvirker landskabet:  
+- Cyber spionage
+- Cyberkriminalitet
+- Hacktivism
+* 21/09 Cloud security
+Software as a service <--> Platform aaS <--> Infrastructure aaS
+Mindre indflydelse <-------------------------> Mere indflydelse
+
+| Løsning | Eget ansvar                            | Cloud-leverandør                          |
+| Saas    | Conf af log                            | Data / Apps                               |
+| paas    | Logs fra egne                          | System management                         |
+| IaaS    | Lokal overvågning / App-logs / OS-logs | Net, hardware, procedurer, fysisk sikring |
+
+Vigtige ting til cloud leverandørers kontrakter:  
+- Data i EU
+- Brug af krypterin
+- Leverandør mulighed for at tilgå data
+- Logging
+- Sletning af data
+- kassering af datamedier
+- Revisorerklæring
+- Hovedsaligt valg af certificerede leverandører (ISO 27001)
+- Registreredes rettigheder
+Datatilsynet ^^
